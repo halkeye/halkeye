@@ -34,17 +34,17 @@ jobs:
     steps:
       - name: Checkout repository
         if: ${{ inputs.checkout_upstream_repo == 'false' }}
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
       - name: Checkout repository
         if: ${{ inputs.checkout_upstream_repo != 'false' }}
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
         with:
           repository: ${{ inputs.checkout_upstream_repo }}
           ref: ${{ inputs.upstream_version }}
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@d70bba72b1f3fd22344832f00baa16ece964efeb # v3
+        uses: docker/setup-buildx-action@d70bba72b1f3fd22344832f00baa16ece964efeb # v3.3.0
 
       # Uses the `docker/login-action` action to log in to the Container registry registry using the account and password that will publish the packages. Once published, the packages are scoped to the account defined here.
       - name: Log in to the Container registry
@@ -71,7 +71,7 @@ jobs:
             type=sha
 
       - name: Create tag
-        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
         env:
           UPSTREAM_VERSION: ${{ inputs.upstream_version }}
           RUN_NUMBER: ${{ inputs.run_NUMBER }}
@@ -99,7 +99,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Create release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@a74c6b72af54cfa997e81df42d94703d6313a2d0 # v2.0.6
         with:
           make_latest: true
           generate_release_notes: true
