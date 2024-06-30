@@ -8,7 +8,7 @@
     ":automergeDigest",
     ":automergeBranch",
     ":timezone(America/Vancouver)",
-    "helpers:pinGitHubActionDigests"
+    "helpers:pinGitHubActionDigestsToSemver"
   ],
   "packageRules": [
     {
