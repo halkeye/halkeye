@@ -63,7 +63,8 @@ jobs:
           labels: |
             org.opencontainers.image.source=${{ inputs.upstream_repo }}
             org.opencontainers.image.url=${{ inputs.upstream_repo }}
-            org.opencontainers.image.revision=v${{inputs.upstream_version}}
+            org.opencontainers.image.revision=${{inputs.upstream_version}}
+            org.opencontainers.image.version=${{inputs.upstream_version}}
           tags: |
             type=raw,value=${{inputs.upstream_version}}.${{ inputs.run_number }}
             type=ref,event=branch
