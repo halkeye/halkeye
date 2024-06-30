@@ -59,7 +59,7 @@ jobs:
             type=sha
 
       - name: Create tag
-        uses: actions/github-script@v5
+        uses: actions/github-script@v6
         env:
           UPSTREAM_VERSION: ${{ inputs.upstream_version }}
           RUN_NUMBER: ${{ inputs.run_NUMBER }}
