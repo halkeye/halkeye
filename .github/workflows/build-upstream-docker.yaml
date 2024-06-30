@@ -33,14 +33,14 @@ jobs:
 
     steps:
       - name: Checkout repository
-        if: ${{ inputs.checkout_upstream_repo != 'true' }}
+        if: ${{ inputs.checkout_upstream_repo == 'false' }}
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
 
       - name: Checkout repository
-        if: ${{ inputs.checkout_upstream_repo == 'true' }}
+        if: ${{ inputs.checkout_upstream_repo != 'false' }}
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
         with:
-          repository: ${{ inputs.upstream_repo }}
+          repository: ${{ inputs.checkout_upstream_repo }}
           ref: ${{ inputs.upstream_version }}
 
       - name: Set up Docker Buildx
