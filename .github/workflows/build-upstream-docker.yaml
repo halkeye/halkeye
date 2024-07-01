@@ -3,6 +3,9 @@ name: Build Upstream Docker Image
 on:
   workflow_call:
     inputs:
+      platforms:
+        type: string
+        default: linux/amd64,linux/arm64
       upstream_version:
         required: true
         type: string
@@ -95,7 +98,7 @@ jobs:
           push: true
           build-args: |
             UPSTREAM_VERSION=${{ inputs.upstream_version }}
-          platforms: linux/amd64,linux/arm64
+          platforms: "${{ inputs.platforms }}"
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
