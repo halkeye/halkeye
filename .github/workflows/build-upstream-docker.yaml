@@ -25,7 +25,10 @@ on:
         required: false
         type: string
         default: "false"
-
+      dockerfile:
+        type: string
+        description: "Path to the Dockerfile"
+        required: false
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -95,6 +98,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
+          file: ${{ inputs.dockerfile }}
           push: true
           build-args: |
             UPSTREAM_VERSION=${{ inputs.upstream_version }}
