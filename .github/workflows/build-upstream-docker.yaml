@@ -103,7 +103,7 @@ jobs:
           context: .
           file: ${{ inputs.dockerfile }}
           target: ${{ inputs.target }}
-          push: true
+          push: ${{ github.event_name != 'pull_request' }}
           build-args: |
             UPSTREAM_VERSION=${{ inputs.upstream_version }}
           platforms: "${{ inputs.platforms }}"
