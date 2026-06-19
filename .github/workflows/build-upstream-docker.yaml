@@ -43,11 +43,11 @@ jobs:
     steps:
       - name: Checkout repository
         if: ${{ inputs.checkout_upstream_repo == 'false' }}
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Checkout repository
         if: ${{ inputs.checkout_upstream_repo != 'false' }}
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           repository: ${{ inputs.checkout_upstream_repo }}
           ref: ${{ inputs.upstream_version }}
